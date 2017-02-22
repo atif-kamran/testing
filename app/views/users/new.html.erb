@@ -1,0 +1,40 @@
+<% if flash[:error] %>
+  <div class = "notice">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class = "notice">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<h1>Register: </h1>
+
+<form action="/users/create" method="post">
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+<p>Name: </p>
+<input type="text" name="name" value="">
+<p>E-Mail: </p>
+<input type="text" name="email" value="">
+<p>Password: </p>
+<input type="password" name="password" value="">
+<p>Password Confirmation: </p>
+<input type="password" name="password_confirmation" value="">
+<br>
+<br>
+<input type="submit" class="btn btn-default" name="" value="Create">
+</form>
+<br>
+
+<h1>Login </h1>
+<form action="/users/login" method="post">
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+<p>E-Mail: </p>
+<input type="text" name="email" value="">
+<p>Password: </p>
+<input type="password" name="password" value="">
+<br>
+<br>
+<input type="submit" name="" value="Login">
+</form>
+<br>

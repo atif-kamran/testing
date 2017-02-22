@@ -1,0 +1,27 @@
+<h1>Welcome to the Users Page!</h1>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+      <tr>
+        <td><%= user['name'] %></td>
+        <td><%= user['email'] %></td>
+        <td><a href='/users/<%= user['id'] %>'>Show</a> | <a href="/users/<%= user['id'] %>/edit">Edit</a> | <a href='/users/<%= user['id'] %>/destroy'>Delete</a>
+      </tr>
+        <% end %>
+
+    </tbody>
+  </table>
+</div>
+
+<form action="/users/logout" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <input type="submit" class="btn btn-default" name="" value="Logout">
+</form>
